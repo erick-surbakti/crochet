@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/classical-037453f4-b921-46f9-a020-0f5d90d6c6b7/styles.css">
+<script src="_ds/classical-037453f4-b921-46f9-a020-0f5d90d6c6b7/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>html,body{margin:0;background:var(--color-bg)}body{overflow-x:clip}a{color:inherit;text-decoration:none}a:hover{color:var(--color-accent-700)}</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position:relative;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);overflow-x:clip">
+
+<div data-x="loader" aria-hidden="true" style="position:fixed;inset:0;z-index:100;background:var(--color-bg);display:none;flex-direction:column;align-items:center;justify-content:center;gap:28px">
+  <div data-x="loaderMark" style="width:120px;height:120px"></div>
+  <span data-x="loaderWord" style="font-family:var(--font-heading);font-size:18px;letter-spacing:.32em;text-transform:uppercase;color:var(--color-neutral-700)">Lovely.Crochet</span>
+</div>
+<canvas data-x="cursor" aria-hidden="true" style="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:90"></canvas>
+<div data-x="weave" aria-hidden="true" style="position:fixed;inset:0;z-index:95;pointer-events:none;overflow:hidden;display:none"></div>
+<svg data-x="yarn" aria-hidden="true" style="position:absolute;top:0;left:0;pointer-events:none;z-index:1;overflow:visible"></svg>
+
+<header data-x="header" style="position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--color-bg) 90%, transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+  <nav class="nav" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px clamp(16px,3vw,40px);padding:16px clamp(20px,5vw,72px);max-width:none">
+    <a href="#top" data-weave="" class="nav-brand" style="display:flex;align-items:center;gap:10px;margin-right:auto;font-family:var(--font-heading);font-size:23px;letter-spacing:.02em">
+      <svg width="26" height="26" viewBox="-14 -14 28 28" aria-hidden="true" style="overflow:visible"><path d="M-12 9 C -5 9, 6 7, 6 -2 C 6 -9, -3 -10, -4 -3 C -5 4, 4 9, 12 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+      Lovely.Crochet
+    </a>
+    <div style="display:flex;flex-wrap:wrap;gap:8px clamp(18px,2.6vw,36px);font-size:12px;letter-spacing:.16em;text-transform:uppercase">
+      <a href="#collection" data-weave="" style="padding-bottom:4px;background-image:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 7px);background-repeat:no-repeat;background-position:left bottom;background-size:0% 1px;transition:background-size .5s cubic-bezier(.6,0,.2,1)" style-hover="background-size:100% 1px">Collection</a>
+      <a href="#process" data-weave="" style="padding-bottom:4px;background-image:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 7px);background-repeat:no-repeat;background-position:left bottom;background-size:0% 1px;transition:background-size .5s cubic-bezier(.6,0,.2,1)" style-hover="background-size:100% 1px">Process</a>
+      <a href="#stitches" data-weave="" style="padding-bottom:4px;background-image:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 7px);background-repeat:no-repeat;background-position:left bottom;background-size:0% 1px;transition:background-size .5s cubic-bezier(.6,0,.2,1)" style-hover="background-size:100% 1px">Stitches</a>
+      <a href="#story" data-weave="" style="padding-bottom:4px;background-image:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 7px);background-repeat:no-repeat;background-position:left bottom;background-size:0% 1px;transition:background-size .5s cubic-bezier(.6,0,.2,1)" style-hover="background-size:100% 1px">Story</a>
+    </div>
+    <button data-x="cart" type="button" class="btn btn-ghost" aria-label="{{ cartLabel }}" style="display:flex;align-items:center;gap:8px;padding:6px 8px">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+      <span style="font-size:12px;font-feature-settings:'tnum';min-width:1ch">{{ cartCount }}</span>
+    </button>
+  </nav>
+</header>
+
+<main>
+<section id="top" data-screen-label="Hero" style="position:relative;z-index:2;min-height:calc(100vh - 70px);box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));align-items:center;gap:clamp(24px,4vw,64px);padding:clamp(32px,6vh,80px) clamp(20px,5vw,72px) clamp(72px,12vh,140px);max-width:1440px;margin:0 auto">
+  <div style="display:flex;flex-direction:column;gap:clamp(24px,3vw,40px)">
+    <h1 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(64px,9.4vw,156px);line-height:.9;letter-spacing:-.02em;margin:0 0 0 -.04em">
+      <span data-reveal="line" style="display:block">Made Loop</span>
+      <span data-reveal="line" style="display:block;padding-left:.9em">by Loop.</span>
+    </h1>
+    <p data-reveal="fade" style="max-width:34ch;font-size:clamp(16px,1.3vw,19px);line-height:1.6;margin:0;color:var(--color-neutral-800)">Contemporary crochet pieces shaped slowly, intentionally, and by hand.</p>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:40px">
+      <a href="#collection" data-weave="" data-thread="" style="position:relative;display:inline-flex;gap:10px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;padding:8px 0">Shop Collection <span aria-hidden="true">→</span></a>
+      <a href="#process" data-weave="" style="font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:4px;background-image:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 7px);background-repeat:no-repeat;background-position:left bottom;background-size:100% 1px">How it is made</a>
+    </div>
+  </div>
+  <figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:20px">
+    <div data-x="heroStage" style="width:min(100%,600px);aspect-ratio:1;perspective:1400px;position:relative">
+      <div data-x="heroObj" style="position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(8deg);will-change:transform"></div>
+      <span data-yarn="1" style="position:absolute;left:50%;top:50%;width:1px;height:1px"></span>
+    </div>
+    <figcaption style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);font-feature-settings:'tnum'">Fig. 1 — Granny motif · mercerised cotton · 5 rounds</figcaption>
+  </figure>
+  <div style="position:absolute;left:clamp(20px,5vw,72px);bottom:32px;display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700)">
+    <span style="width:40px;height:1px;background:var(--color-neutral-500)"></span>Scroll and follow the thread
+  </div>
+</section>
+
+<section data-screen-label="Intro" style="position:relative;z-index:2;padding:clamp(80px,14vh,180px) clamp(20px,5vw,72px);max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px 40px">
+  <span style="flex:1 1 200px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700);font-feature-settings:'tnum'">The atelier</span>
+  <p data-reveal="rows" style="flex:3 1 520px;margin:0;font-family:var(--font-heading);font-weight:400;font-size:clamp(30px,3.4vw,52px);line-height:1.16;letter-spacing:-.01em;text-wrap:pretty">Lovely.Crochet is a small crochet studio. Every piece begins as a single strand and is worked by one pair of hands, row by row, until it holds its own shape.</p>
+  <span data-yarn="2" style="position:absolute;left:12%;bottom:30px;width:1px;height:1px"></span>
+</section>
+
+<section id="collection" data-screen-label="Collection" style="position:relative;z-index:2;padding:clamp(40px,8vh,100px) clamp(20px,5vw,72px) clamp(80px,12vh,160px);max-width:1440px;margin:0 auto">
+  <div aria-hidden="true" style="position:absolute;top:0;right:clamp(20px,5vw,72px);font-family:var(--font-heading);font-weight:400;font-size:clamp(120px,22vw,340px);line-height:.8;color:var(--color-neutral-200);pointer-events:none;user-select:none;z-index:-1">Loop</div>
+  <span data-yarn="3" style="position:absolute;right:30%;top:20px;width:1px;height:1px"></span>
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 48px">
+    <div style="display:flex;flex-direction:column;gap:20px;max-width:640px">
+      <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700);font-feature-settings:'tnum'">Collection — Autumn / Winter 2026</span>
+      <h2 data-reveal="rows" style="margin:0;font-family:var(--font-heading);font-weight:400;font-size:clamp(40px,5vw,76px);line-height:1;letter-spacing:-.015em">Objects worked by hand, in small runs.</h2>
+    </div>
+    <p style="margin:0;max-width:30ch;font-size:14px;line-height:1.6;color:var(--color-neutral-700)">Twelve pieces this season. Each is made to order and leaves the studio within three weeks.</p>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(32px,5vw,88px);margin-top:clamp(56px,8vw,120px)">
+    <figure data-product="" tabindex="0" style="margin:0;flex:7 1 400px;display:flex;flex-direction:column;gap:18px;outline-offset:6px">
+      <div style="position:relative">
+        <div class="plate" data-reveal="stitch" style="position:relative;overflow:hidden;aspect-ratio:4/5">
+          <div data-role="zoom" style="position:absolute;inset:0;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)"><image-slot id="luna-bag" shape="rect" placeholder="Luna Bag — product photograph"></image-slot></div>
+        </div>
+        <svg data-role="outline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;left:-12px;top:-12px;width:calc(100% + 24px);height:calc(100% + 24px);pointer-events:none;overflow:visible"><path d="M2 1.6 C 30 0.7, 70 2.3, 98.4 1.3 C 99.3 30, 98.3 70, 98.8 98.5 C 70 99.4, 30 98.1, 1.5 98.8 C 0.6 70, 1.9 30, 2 1.6" pathLength="1" fill="none" vector-effect="non-scaling-stroke" style="stroke:var(--color-accent);stroke-width:1.3;stroke-dasharray:1;stroke-dashoffset:1;stroke-linecap:round"></path></svg>
+      </div>
+      <figcaption data-role="cap" style="display:flex;flex-direction:column;gap:3px">
+        <span style="font-family:var(--font-heading);font-size:22px;letter-spacing:.16em;text-transform:uppercase">Luna Bag</span>
+        <span style="font-size:13px;color:var(--color-neutral-700)">Cotton Yarn</span>
+        <span style="font-size:13px;color:var(--color-neutral-700)">7 Hours of Handwork</span>
+      </figcaption>
+    </figure>
+    <div style="flex:4 1 260px;margin-top:clamp(0px,14vw,220px);display:flex;flex-direction:column;gap:16px">
+      <div class="plate" data-reveal="stitch" style="position:relative;overflow:hidden;aspect-ratio:1"><image-slot id="macro-yarn" shape="rect" placeholder="Macro — yarn on the cone"></image-slot></div>
+      <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);font-feature-settings:'tnum'">Plate 02 — Undyed cotton, 8-ply</span>
+      <p style="margin:12px 0 0;font-size:14px;line-height:1.7;color:var(--color-neutral-800);text-align:justify;hyphens:auto;max-width:36ch">We buy yarn by the cone from small spinners and keep the colours close to the fibre: raw, oat, stone, ink.</p>
+    </div>
+  </div>
+
+  <div style="position:relative;display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(32px,5vw,88px);margin-top:clamp(64px,9vw,140px)">
+    <span data-yarn="4" style="position:absolute;left:8%;top:-60px;width:1px;height:1px"></span>
+    <div style="flex:3 1 220px;margin-top:clamp(0px,8vw,140px);display:flex;flex-direction:column;gap:16px">
+      <div class="plate" data-reveal="stitch" style="position:relative;overflow:hidden;aspect-ratio:3/4"><image-slot id="stitch-detail" shape="rect" placeholder="Stitch detail — close-up"></image-slot></div>
+      <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);font-feature-settings:'tnum'">Plate 03 — Double crochet, close</span>
+    </div>
+    <figure data-product="" tabindex="0" style="margin:0;flex:6 1 380px;display:flex;flex-direction:column;gap:18px;outline-offset:6px">
+      <div style="position:relative">
+        <div class="plate" data-reveal="stitch" style="position:relative;overflow:hidden;aspect-ratio:5/4">
+          <div data-role="zoom" style="position:absolute;inset:0;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)"><image-slot id="orla-throw" shape="rect" placeholder="Orla Throw — product photograph"></image-slot></div>
+        </div>
+        <svg data-role="outline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;left:-12px;top:-12px;width:calc(100% + 24px);height:calc(100% + 24px);pointer-events:none;overflow:visible"><path d="M1.6 2 C 30 1.1, 70 2.6, 98.6 1.5 C 99.1 30, 98.5 70, 98.4 98.7 C 70 99.1, 30 98.4, 1.3 98.5 C 0.8 70, 1.7 30, 1.6 2" pathLength="1" fill="none" vector-effect="non-scaling-stroke" style="stroke:var(--color-accent);stroke-width:1.3;stroke-dasharray:1;stroke-dashoffset:1;stroke-linecap:round"></path></svg>
+      </div>
+      <figcaption data-role="cap" style="display:flex;flex-direction:column;gap:3px">
+        <span style="font-family:var(--font-heading);font-size:22px;letter-spacing:.16em;text-transform:uppercase">Orla Throw</span>
+        <span style="font-size:13px;color:var(--color-neutral-700)">Undyed Merino</span>
+        <span style="font-size:13px;color:var(--color-neutral-700)">31 Hours of Handwork</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(32px,5vw,88px);margin-top:clamp(64px,9vw,140px)">
+    <figure data-product="" tabindex="0" style="margin:0;flex:4 1 260px;display:flex;flex-direction:column;gap:18px;outline-offset:6px">
+      <div style="position:relative">
+        <div class="plate" data-reveal="stitch" style="position:relative;overflow:hidden;aspect-ratio:4/5">
+          <div data-role="zoom" style="position:absolute;inset:0;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)"><image-slot id="sable-collar" shape="rect" placeholder="Sable Collar — product photograph"></image-slot></div>
+        </div>
+        <svg data-role="outline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;left:-12px;top:-12px;width:calc(100% + 24px);height:calc(100% + 24px);pointer-events:none;overflow:visible"><path d="M2.2 1.4 C 30 2.1, 70 0.9, 98.2 1.8 C 98.9 30, 99.2 70, 98.6 98.4 C 70 98.9, 30 99.3, 1.7 98.6 C 1.1 70, 0.8 30, 2.2 1.4" pathLength="1" fill="none" vector-effect="non-scaling-stroke" style="stroke:var(--color-accent);stroke-width:1.3;stroke-dasharray:1;stroke-dashoffset:1;stroke-linecap:round"></path></svg>
+      </div>
+      <figcaption data-role="cap" style="display:flex;flex-direction:column;gap:3px">
+        <span style="font-family:var(--font-heading);font-size:22px;letter-spacing:.16em;text-transform:uppercase">Sable Collar</span>
+        <span style="font-size:13px;color:var(--color-neutral-700)">Mercerised Cotton</span>
+        <span style="font-size:13px;color:var(--color-neutral-700)">4 Hours of Handwork</span>
+      </figcaption>
+    </figure>
+    <div style="flex:6 1 380px;margin-top:clamp(0px,10vw,180px);display:flex;flex-direction:column;gap:16px">
+      <div class="plate" data-reveal="stitch" style="position:relative;overflow:hidden;aspect-ratio:3/2"><image-slot id="hands-crafting" shape="rect" placeholder="Hands at work — hook and yarn"></image-slot></div>
+      <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);font-feature-settings:'tnum'">Plate 05 — At the bench</span>
+    </div>
+  </div>
+</section>
+
+<section id="detail" data-screen-label="Product detail" style="position:relative;z-index:2;padding:clamp(60px,10vh,140px) clamp(20px,5vw,72px);max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(48px,6vw,110px);align-items:center">
+  <span data-yarn="5" style="position:absolute;left:3%;top:40px;width:1px;height:1px"></span>
+  <div style="flex:6 1 380px;position:relative">
+    <div data-x="detailImg" class="plate" style="position:relative;aspect-ratio:4/5">
+      <div style="position:absolute;inset:0;overflow:hidden"><image-slot id="luna-detail" shape="rect" placeholder="Luna Bag — full view, front"></image-slot></div>
+      <button type="button" aria-label="Detail 1: hand-finished edge" onMouseEnter="{{ ann0 }}" onFocus="{{ ann0 }}" onClick="{{ ann0 }}" onMouseLeave="{{ annOff }}" onBlur="{{ annOff }}" style="position:absolute;left:50%;top:9%;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;border:1px solid var(--color-text);background:{{ h0bg }};color:{{ h0fg }};font:12px var(--font-body);font-feature-settings:'tnum';cursor:pointer;padding:0;transition:background .3s,color .3s">1</button>
+      <button type="button" aria-label="Detail 2: 12 rows of double crochet" onMouseEnter="{{ ann1 }}" onFocus="{{ ann1 }}" onClick="{{ ann1 }}" onMouseLeave="{{ annOff }}" onBlur="{{ annOff }}" style="position:absolute;left:34%;top:50%;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;border:1px solid var(--color-text);background:{{ h1bg }};color:{{ h1fg }};font:12px var(--font-body);font-feature-settings:'tnum';cursor:pointer;padding:0;transition:background .3s,color .3s">2</button>
+      <button type="button" aria-label="Detail 3: 100% cotton yarn" onMouseEnter="{{ ann2 }}" onFocus="{{ ann2 }}" onClick="{{ ann2 }}" onMouseLeave="{{ annOff }}" onBlur="{{ annOff }}" style="position:absolute;left:62%;top:82%;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;border:1px solid var(--color-text);background:{{ h2bg }};color:{{ h2fg }};font:12px var(--font-body);font-feature-settings:'tnum';cursor:pointer;padding:0;transition:background .3s,color .3s">3</button>
+      <button type="button" aria-label="Detail 4: approximately 7 hours of work" onMouseEnter="{{ ann3 }}" onFocus="{{ ann3 }}" onClick="{{ ann3 }}" onMouseLeave="{{ annOff }}" onBlur="{{ annOff }}" style="position:absolute;left:74%;top:30%;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;border:1px solid var(--color-text);background:{{ h3bg }};color:{{ h3fg }};font:12px var(--font-body);font-feature-settings:'tnum';cursor:pointer;padding:0;transition:background .3s,color .3s">4</button>
+      <div aria-hidden="true" style="position:absolute;left:calc(50% + 18px);top:9%;transform:translateY(-50%);opacity:{{ a0 }};transition:opacity .35s;pointer-events:none;display:flex;align-items:center;gap:0"><span style="width:44px;height:1px;background:var(--color-text)"></span><span style="background:var(--color-bg);padding:7px 12px;font-size:13px;white-space:nowrap;border:1px solid var(--color-text)">Hand-finished edge</span></div>
+      <div aria-hidden="true" style="position:absolute;left:calc(34% + 18px);top:50%;transform:translateY(-50%);opacity:{{ a1 }};transition:opacity .35s;pointer-events:none;display:flex;align-items:center;gap:0"><span style="width:44px;height:1px;background:var(--color-text)"></span><span style="background:var(--color-bg);padding:7px 12px;font-size:13px;white-space:nowrap;border:1px solid var(--color-text)">12 rows of double crochet</span></div>
+      <div aria-hidden="true" style="position:absolute;right:calc(38% + 18px);top:82%;transform:translateY(-50%);opacity:{{ a2 }};transition:opacity .35s;pointer-events:none;display:flex;flex-direction:row-reverse;align-items:center;gap:0"><span style="width:44px;height:1px;background:var(--color-text)"></span><span style="background:var(--color-bg);padding:7px 12px;font-size:13px;white-space:nowrap;border:1px solid var(--color-text)">100% cotton yarn</span></div>
+      <div aria-hidden="true" style="position:absolute;right:calc(26% + 18px);top:30%;transform:translateY(-50%);opacity:{{ a3 }};transition:opacity .35s;pointer-events:none;display:flex;flex-direction:row-reverse;align-items:center;gap:0"><span style="width:44px;height:1px;background:var(--color-text)"></span><span style="background:var(--color-bg);padding:7px 12px;font-size:13px;white-space:nowrap;border:1px solid var(--color-text)">Approximately 7 hours of work</span></div>
+    </div>
+  </div>
+  <div style="flex:4 1 300px;display:flex;flex-direction:column;gap:28px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700);font-feature-settings:'tnum'">Study No. 01 — In detail</span>
+    <h2 data-reveal="line" style="margin:0 0 0 -.04em;font-family:var(--font-heading);font-weight:400;font-size:clamp(52px,6vw,96px);line-height:.95;letter-spacing:-.02em">Luna Bag</h2>
+    <p style="margin:0;font-size:15px;line-height:1.7;color:var(--color-neutral-800);text-align:justify;hyphens:auto;max-width:40ch">A soft, structured tote worked in rounds from the base, then in rows to the rim. The handle is crocheted separately and joined with a hand-finished edge.</p>
+    <div style="display:flex;flex-direction:column">
+      <div onMouseEnter="{{ ann0 }}" onMouseLeave="{{ annOff }}" style="display:flex;gap:20px;padding:12px 0;border-top:1px solid var(--color-divider);font-size:14px;color:{{ r0 }};transition:color .3s"><span style="font-feature-settings:'tnum';width:2ch">01</span>Hand-finished edge</div>
+      <div onMouseEnter="{{ ann1 }}" onMouseLeave="{{ annOff }}" style="display:flex;gap:20px;padding:12px 0;border-top:1px solid var(--color-divider);font-size:14px;color:{{ r1 }};transition:color .3s"><span style="font-feature-settings:'tnum';width:2ch">02</span>12 rows of double crochet</div>
+      <div onMouseEnter="{{ ann2 }}" onMouseLeave="{{ annOff }}" style="display:flex;gap:20px;padding:12px 0;border-top:1px solid var(--color-divider);font-size:14px;color:{{ r2 }};transition:color .3s"><span style="font-feature-settings:'tnum';width:2ch">03</span>100% cotton yarn</div>
+      <div onMouseEnter="{{ ann3 }}" onMouseLeave="{{ annOff }}" style="display:flex;gap:20px;padding:12px 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);font-size:14px;color:{{ r3 }};transition:color .3s"><span style="font-feature-settings:'tnum';width:2ch">04</span>Approximately 7 hours of work</div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px">
+      <span style="font-family:var(--font-heading);font-size:34px;font-feature-settings:'tnum'">€340</span>
+      <button type="button" class="btn btn-primary" onClick="{{ addToCart }}">Add to bag</button>
+      <span style="font-size:13px;color:var(--color-neutral-700)">Made to order · ships in 3 weeks</span>
+    </div>
+  </div>
+</section>
+
+<section id="process" data-x="proc" data-screen-label="Craft process" style="position:relative;z-index:2;height:500vh">
+  <span data-yarn="6" style="position:absolute;left:6%;top:0;width:1px;height:1px"></span>
+  <div style="position:sticky;top:0;height:100vh;box-sizing:border-box;background:var(--color-bg);display:flex;flex-wrap:wrap;align-items:center;align-content:center;gap:clamp(16px,4vw,72px);padding:84px clamp(20px,5vw,72px) 56px;overflow:hidden">
+    <div style="flex:1 1 300px;max-width:400px;display:flex;flex-direction:column;gap:24px">
+      <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">The craft, in five movements</span>
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+          <div style="display:flex;gap:18px;align-items:baseline;padding:10px 0;border-top:1px solid var(--color-divider);color:{{ s.color }};transition:color .4s">
+            <span style="font-size:12px;font-feature-settings:'tnum';letter-spacing:.1em">{{ s.n }}</span>
+            <span style="font-family:var(--font-heading);font-size:clamp(24px,2.4vw,34px);line-height:1.1">{{ s.title }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="min-height:3.4em;margin:0;font-size:15px;line-height:1.6;color:var(--color-neutral-800);max-width:36ch">{{ stepText }}</p>
+    </div>
+    <div style="flex:2 1 420px;display:flex;justify-content:center">
+      <div style="position:relative;width:min(100%, 96vh);aspect-ratio:800/560">
+        <svg data-x="procSvg" viewBox="0 0 800 560" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible"></svg>
+        <div data-x="procImg" style="position:absolute;left:24%;top:3%;width:52%;height:86%;opacity:0">
+          <div class="plate" style="position:relative;width:100%;height:100%"><image-slot id="process-finished" shape="rect" placeholder="The finished Luna Bag"></image-slot></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;left:clamp(20px,5vw,72px);right:clamp(20px,5vw,72px);bottom:28px;height:1px;background:var(--color-divider)"><div data-x="procBar" style="height:1px;width:100%;transform-origin:left;transform:scaleX(0);background:var(--color-text)"></div></div>
+  </div>
+  <span data-yarn="7" style="position:absolute;left:88%;bottom:0;width:1px;height:1px"></span>
+</section>
+
+<section id="stitches" data-screen-label="Stitch explorer" style="position:relative;z-index:2;padding:clamp(80px,12vh,160px) clamp(20px,5vw,72px);max-width:1320px;margin:0 auto">
+  <div style="display:flex;flex-direction:column;gap:20px;max-width:720px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">Explore the Stitch</span>
+    <h2 data-reveal="rows" style="margin:0;font-family:var(--font-heading);font-weight:400;font-size:clamp(40px,5vw,76px);line-height:1;letter-spacing:-.015em">Four ways to pull a loop through.</h2>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,88px);margin-top:clamp(40px,6vw,80px);align-items:flex-start">
+    <div role="list" style="flex:1 1 300px;display:flex;flex-direction:column;border-bottom:1px solid var(--color-divider)">
+      <sc-for list="{{ stitchList }}" as="st" hint-placeholder-count="4">
+        <button type="button" role="listitem" onMouseEnter="{{ st.pick }}" onFocus="{{ st.pick }}" onClick="{{ st.pick }}" style="display:flex;width:100%;align-items:center;gap:18px;padding:20px 0;border:0;border-top:1px solid var(--color-divider);background:transparent;cursor:pointer;text-align:left;font:inherit;color:{{ st.color }};transition:color .3s">
+          <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;width:3.5ch">{{ st.abbr }}</span>
+          <span style="display:flex;flex-direction:column;gap:4px;flex:1">
+            <span style="font-family:var(--font-heading);font-size:clamp(24px,2.2vw,30px);line-height:1.1">{{ st.name }}</span>
+            <span style="font-size:13px;color:var(--color-neutral-700)">{{ st.note }}</span>
+          </span>
+          <span style="height:1px;width:{{ st.bar }};background:currentColor;transition:width .5s cubic-bezier(.6,0,.2,1)"></span>
+        </button>
+      </sc-for>
+    </div>
+    <figure style="flex:2 1 440px;margin:0;display:flex;flex-direction:column;gap:14px">
+      <div style="border:1px solid var(--color-divider);aspect-ratio:560/380;position:relative">
+        <svg data-x="stitchSvg" viewBox="0 0 560 380" role="img" aria-label="{{ stitchCaption }}" style="position:absolute;inset:0;width:100%;height:100%"></svg>
+      </div>
+      <figcaption style="font-size:12px;letter-spacing:.06em;color:var(--color-neutral-700)">{{ stitchCaption }}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="story" data-screen-label="Brand story" style="position:relative;z-index:2;padding:clamp(80px,12vh,160px) clamp(20px,5vw,72px);max-width:1440px;margin:0 auto">
+  <span data-yarn="8" style="position:absolute;right:6%;top:40%;width:1px;height:1px"></span>
+  <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">About the studio</span>
+  <h2 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(56px,10vw,170px);line-height:.92;letter-spacing:-.02em;margin:28px 0 0 -.04em">
+    <span data-reveal="line" style="display:block">Slow objects</span>
+    <span data-reveal="line" style="display:block;padding-left:clamp(0px,12vw,220px)">for fast lives.</span>
+  </h2>
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,110px);margin-top:clamp(56px,9vw,140px);align-items:flex-start">
+    <figure style="flex:5 1 320px;margin:0;display:flex;flex-direction:column;gap:14px">
+      <div class="plate" data-reveal="stitch" style="position:relative;overflow:hidden;aspect-ratio:3/4"><image-slot id="story-macro" shape="rect" placeholder="Macro — linen fibre texture"></image-slot></div>
+      <figcaption style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700)">Plate 06 — Linen, undyed</figcaption>
+    </figure>
+    <div style="flex:4 1 300px;margin-top:clamp(0px,10vw,180px);display:flex;flex-direction:column;gap:28px">
+      <p data-reveal="fade" style="margin:0;font-size:16px;line-height:1.75;text-align:justify;hyphens:auto;max-width:42ch">We work with natural fibres only: cotton, linen, undyed wool. Each piece is made start to finish by one maker and signed with a small knot in the final row.</p>
+      <p data-reveal="fade" style="margin:0;font-size:16px;line-height:1.75;text-align:justify;hyphens:auto;max-width:42ch;color:var(--color-neutral-800)">We make in small numbers because the work cannot go faster. A collar takes an afternoon. A throw takes a week. We would rather you wait than we hurry.</p>
+      <figure style="margin:16px 0 0;width:min(100%,340px);align-self:flex-end;display:flex;flex-direction:column;gap:12px">
+        <div class="plate" data-reveal="stitch" style="position:relative;overflow:hidden;aspect-ratio:4/3"><image-slot id="story-knot" shape="rect" placeholder="Close-up — the final knot"></image-slot></div>
+        <figcaption style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700)">Plate 07 — The final knot</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer data-screen-label="Footer" style="position:relative;z-index:2;padding:clamp(80px,14vh,180px) clamp(20px,5vw,72px) 40px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,7vw,100px)">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(16px,3vw,48px)">
+    <div data-x="footMark" data-yarn="end" style="width:clamp(80px,9vw,130px);aspect-ratio:1;flex:none"></div>
+    <div style="font-family:var(--font-heading);font-weight:400;font-size:clamp(52px,10.5vw,176px);line-height:.85;letter-spacing:-.02em">Lovely.Crochet</div>
+  </div>
+  <hr class="hr" style="margin:0">
+  <div style="display:flex;flex-wrap:wrap;gap:20px 56px;font-size:13px;color:var(--color-neutral-700);align-items:baseline">
+    <span>Contemporary crochet, made loop by loop.</span>
+    <span>Studio visits by appointment</span>
+    <div style="display:flex;flex-wrap:wrap;gap:12px 28px">
+      <a href="#story">Journal</a>
+      <a href="#detail">Care guide</a>
+      <a href="#top">Instagram</a>
+      <a href="#top">Contact</a>
+    </div>
+    <span style="margin-left:auto;font-feature-settings:'tnum'">© 2026 Lovely.Crochet</span>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;loader&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;cursorThread&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;calm&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;'full' | 'calm'&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { cart: 0, ann: -1, step: 0, stitch: 0 };
+  rootRef = React.createRef();
+  STEPS = [
+    { n: '01', title: 'Yarn', text: 'A single strand of undyed cotton, drawn from the cone.' },
+    { n: '02', title: 'Loop', text: 'The hook pulls the strand through itself. A chain of loops becomes the foundation.' },
+    { n: '03', title: 'Stitch', text: 'Each new row is worked into the one below. Loops lock together into stitches.' },
+    { n: '04', title: 'Form', text: 'Increases and decreases turn flat fabric into a shape that holds itself.' },
+    { n: '05', title: 'Finished Piece', text: 'Edges finished and ends woven in by hand. The strand is now an object.' }
+  ];
+  DEFS = [
+    { k: 'sc', abbr: 'sc', name: 'Single Crochet', note: 'Short, dense, firm', col: 'var(--color-neutral-800)', h: 26, gap: 24 },
+    { k: 'hdc', abbr: 'hdc', name: 'Half Double Crochet', note: 'A step taller, softer', col: 'var(--color-accent-700)', h: 36, gap: 24 },
+    { k: 'dc', abbr: 'dc', name: 'Double Crochet', note: 'Tall, open, quick to grow', col: 'var(--color-accent-500)', h: 50, gap: 24 },
+    { k: 'gr', abbr: 'gr', name: 'Granny Stitch', note: 'Clusters of three, spaced', col: 'var(--color-neutral-900)', h: 50, gap: 72 }
+  ];
+
+  q(n) { return this.rootRef.current.querySelector('[data-x="' + n + '"]'); }
+  get reduced() { return (this.props.motion ?? 'full') === 'calm' || window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  get fine() { return window.matchMedia('(hover: hover) and (pointer: fine)').matches; }
+  el(tag, attrs, parent) { const e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  on(t, ev, fn, o) { t.addEventListener(ev, fn, o); this.offs.push(() => t.removeEventListener(ev, fn, o)); }
+  dash(p, to, dur) {
+    const from = parseFloat(getComputedStyle(p).strokeDashoffset) || 0;
+    if (p._a) p._a.cancel();
+    p.style.strokeDashoffset = from;
+    p._a = p.animate([{ strokeDashoffset: from }, { strokeDashoffset: to }], { duration: dur, easing: 'cubic-bezier(.55,0,.2,1)', fill: 'forwards' });
+  }
+
+  componentDidMount() {
+    this.offs = []; this.pending = []; this.ready = false;
+    this.mouse = { x: innerWidth / 2, y: innerHeight / 2, nx: .5, ny: .5, t: 0, target: null };
+    this.on(window, 'pointermove', e => { const m = this.mouse; m.x = e.clientX; m.y = e.clientY; m.nx = e.clientX / innerWidth; m.ny = e.clientY / innerHeight; m.t = performance.now(); m.target = e.target; });
+    this.buildHero(); this.setupReveal(); this.setupProducts(); this.setupWeave(); this.buildProcess(); this.setupStitchObserver(); this.setupCursor(); this.buildYarn();
+    document.fonts && document.fonts.ready.then(() => { if (this.offs) { this.setupThreads(); this.buildYarn(); } });
+    this.ro = new ResizeObserver(() => { clearTimeout(this.rt); this.rt = setTimeout(() => this.buildYarn(), 160); });
+    this.ro.observe(this.rootRef.current);
+    this.runLoader();
+    const loop = () => { this.tick(); this.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); this.offs.forEach(f => f()); this.offs = null; this.ro && this.ro.disconnect(); this.io && this.io.disconnect(); this.sio && this.sio.disconnect(); }
+
+  runLoader() {
+    const L = this.q('loader');
+    const done = () => { this.ready = true; this.pending.splice(0).forEach(f => f()); this.heroIn(); };
+    if (!(this.props.loader ?? true) || this.reduced) { done(); return; }
+    L.style.display = 'flex';
+    const box = this.q('loaderMark'); box.innerHTML = '';
+    const s = this.el('svg', { viewBox: '-60 -60 120 120', width: 120, height: 120 }, box); s.style.overflow = 'visible';
+    const st = 'fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;';
+    const ps = [];
+    [45, 135, 225, 315].forEach(a => { const g = this.el('g', { transform: 'rotate(' + a + ')' }, s); ps.push(this.el('path', { d: 'M0 -7 C -17 -20 -15 -44 0 -44 C 15 -44 17 -20 0 -7', pathLength: 1, style: st + 'stroke:var(--color-text);stroke-width:1.5' }, g)); });
+    ps.push(this.el('path', { d: 'M0 -52 A52 52 0 1 1 -0.01 -52', pathLength: 1, style: st + 'stroke:var(--color-accent);stroke-width:1.5' }, s));
+    ps.forEach((p, i) => p.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: i < 4 ? 460 : 640, delay: 120 + i * 250, easing: 'cubic-bezier(.5,0,.2,1)', fill: 'forwards' }));
+    setTimeout(() => {
+      s.animate([{ transform: 'scale(1) rotate(0deg)', opacity: 1 }, { transform: 'scale(.35) rotate(50deg)', opacity: 0 }], { duration: 620, easing: 'cubic-bezier(.6,0,.2,1)', fill: 'forwards' });
+      this.q('loaderWord').animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' });
+      L.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 700, delay: 260, easing: 'ease', fill: 'forwards' }).onfinish = () => { L.style.display = 'none'; };
+      setTimeout(done, 380);
+    }, 2000);
+  }
+
+  buildHero() {
+    const obj = this.q('heroObj'); obj.innerHTML = '';
+    let seed = 11; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+    const P = (a, r) => (Math.cos(a) * r).toFixed(1) + ' ' + (Math.sin(a) * r).toFixed(1);
+    const yarn = (p, d, col, w) => {
+      this.el('path', { d, fill: 'none', style: 'stroke:' + col + ';stroke-width:' + w + ';stroke-linecap:round;stroke-linejoin:round' }, p);
+      this.el('path', { d, fill: 'none', style: 'stroke:color-mix(in oklch, ' + col + ', white 50%);stroke-width:' + (w * .4) + ';stroke-linecap:round;stroke-dasharray:0.1 ' + (w * 1.9) + ';opacity:.85' }, p);
+    };
+    const shadow = document.createElement('div');
+    shadow.style.cssText = 'position:absolute;left:10%;right:10%;top:14%;bottom:6%;border-radius:50%;background:radial-gradient(closest-side, color-mix(in srgb, var(--color-text) 10%, transparent), transparent);transform:translateZ(-90px) translateY(36px)';
+    obj.appendChild(shadow);
+    this.heroLayers = [];
+    const mk = z => { const s = this.el('svg', { viewBox: '-300 -300 600 600' }); s.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform:translateZ(' + z + 'px)'; obj.appendChild(s); this.heroLayers.push(s); return s; };
+    const ink = 'var(--color-neutral-800)', gold = 'var(--color-accent)', deep = 'var(--color-accent-700)';
+    const L1 = mk(0);
+    for (let i = 0; i < 20; i++) { const a0 = i / 20 * Math.PI * 2, a1 = (i + 1) / 20 * Math.PI * 2, am = (a0 + a1) / 2; yarn(L1, 'M' + P(a0, 230) + ' Q' + P(am, 276 + rnd() * 6) + ' ' + P(a1, 230), ink, 2.6); }
+    for (let i = 0; i < 64; i++) { const a = i / 64 * Math.PI * 2 + (rnd() - .5) * .02; yarn(L1, 'M' + P(a, 182) + ' Q' + P(a + .035, 202) + ' ' + P(a, 224), ink, 2.4); }
+    const L2 = mk(28);
+    for (let i = 0; i < 8; i++) {
+      const g = this.el('g', { transform: 'rotate(' + (i * 45 + (rnd() - .5) * 4) + ')' }, L2);
+      [1, .8, .6, .4].forEach(s => { const T = 62 + 112 * s, W = 50 * s; yarn(g, 'M0 -62 C ' + (-W) + ' -88, ' + (-W * 1.12) + ' ' + (-T) + ', 0 ' + (-T) + ' C ' + (W * 1.12) + ' ' + (-T) + ', ' + W + ' -88, 0 -62', s > .7 ? gold : deep, 2.4); });
+    }
+    const L3 = mk(50);
+    for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2 + Math.PI / 16; yarn(L3, 'M' + P(a, 30) + ' Q' + P(a + .1, 44) + ' ' + P(a, 58), ink, 2.6); }
+    const L4 = mk(68);
+    for (let i = 0; i < 10; i++) { const g = this.el('g', { transform: 'rotate(' + (i * 36) + ') translate(0,-17)' }, L4); yarn(g, 'M -7 0 A 7 4.5 0 1 0 7 0 A 7 4.5 0 1 0 -7 0', gold, 2.2); }
+    this.hero = { rx: 8, ry: 0, vx: 0, vy: 0 };
+    if (!this.reduced) this.heroLayers.forEach(l => { l.style.clipPath = 'circle(0% at 50% 50%)'; });
+  }
+  heroIn() {
+    if (this.reduced) return;
+    this.heroLayers.slice().reverse().forEach((l, i) => {
+      const a = l.animate([{ clipPath: 'circle(0% at 50% 50%)' }, { clipPath: 'circle(75% at 50% 50%)' }], { duration: 760, delay: i * 170, easing: 'cubic-bezier(.5,0,.2,1)', fill: 'forwards' });
+      a.onfinish = () => { l.style.clipPath = 'none'; a.cancel(); };
+    });
+  }
+
+  setupReveal() {
+    if (this.reduced) return;
+    const items = [...this.rootRef.current.querySelectorAll('[data-reveal]')];
+    items.forEach(el => this.prep(el));
+    const map = new Map();
+    items.forEach(el => { const k = el.dataset.reveal, t = (k === 'line' || k === 'rows') ? el.parentNode : el; if (!map.has(t)) map.set(t, []); map.get(t).push(el); });
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      this.io.unobserve(e.target);
+      const run = () => (map.get(e.target) || []).forEach(el => this.reveal(el));
+      this.ready ? run() : this.pending.push(run);
+    }), { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+    map.forEach((_, t) => this.io.observe(t));
+  }
+  prep(el) {
+    const k = el.dataset.reveal;
+    if (k === 'line') el.style.clipPath = 'inset(-20% 100% -30% 0)';
+    else if (k === 'rows') el.style.clipPath = 'inset(0 0 100% 0)';
+    else if (k === 'fade') { el.style.opacity = 0; el.style.transform = 'translateY(10px)'; }
+    else if (k === 'stitch') {
+      const R = 7, C = 10, ov = document.createElement('div');
+      ov.setAttribute('aria-hidden', 'true');
+      ov.style.cssText = 'position:absolute;inset:0;display:grid;grid-template-columns:repeat(' + C + ',1fr);grid-template-rows:repeat(' + R + ',1fr);z-index:3;pointer-events:none';
+      for (let i = 0; i < R * C; i++) { const c = document.createElement('div'); c.style.cssText = 'background:var(--color-surface);box-shadow:inset 0 0 0 .5px var(--color-divider);transform:scale(1.03);transform-origin:50% 0'; ov.appendChild(c); }
+      el.appendChild(ov); el._ov = { ov, R, C };
+    }
+  }
+  reveal(el) {
+    const k = el.dataset.reveal;
+    const fin = (a, f) => { a.onfinish = () => { f(); a.cancel(); }; };
+    if (k === 'line') {
+      const sibs = [...el.parentNode.children].filter(c => c.dataset && c.dataset.reveal === 'line');
+      const a = el.animate([{ clipPath: 'inset(-20% 100% -30% 0)' }, { clipPath: 'inset(-20% 0% -30% 0)' }], { duration: 900, delay: sibs.indexOf(el) * 160, easing: 'steps(18, end)', fill: 'forwards' });
+      fin(a, () => { el.style.clipPath = 'none'; });
+    } else if (k === 'rows') {
+      const lh = parseFloat(getComputedStyle(el).lineHeight) || 40, n = Math.max(2, Math.round(el.offsetHeight / lh));
+      const a = el.animate([{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }], { duration: Math.min(1000, 180 * n), easing: 'steps(' + n + ', end)', fill: 'forwards' });
+      fin(a, () => { el.style.clipPath = 'none'; });
+    } else if (k === 'fade') {
+      const a = el.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 900, delay: 150, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' });
+      fin(a, () => { el.style.opacity = ''; el.style.transform = ''; });
+    } else if (k === 'stitch' && el._ov) {
+      const { ov, R, C } = el._ov; let last = null, max = -1;
+      [...ov.children].forEach((c, i) => {
+        const r = Math.floor(i / C), col = i % C, fb = R - 1 - r, pos = fb % 2 ? C - 1 - col : col, d = fb * 95 + pos * 22;
+        const a = c.animate([{ opacity: 1, transform: 'scale(1.03)' }, { opacity: 0, transform: 'scale(1.03) scaleY(.15)' }], { duration: 280, delay: d, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' });
+        if (d > max) { max = d; last = a; }
+      });
+      if (last) last.onfinish = () => { ov.remove(); el._ov = null; };
+    }
+  }
+
+  setupProducts() {
+    if (!this.fine) return;
+    this.rootRef.current.querySelectorAll('[data-product]').forEach(f => {
+      const zoom = f.querySelector('[data-role=zoom]'), path = f.querySelector('[data-role=outline] path'), kids = [...f.querySelector('[data-role=cap]').children];
+      kids.forEach(k => { k.style.opacity = 0; k.style.transform = 'translateY(8px)'; k.style.transition = 'opacity .5s ease, transform .6s cubic-bezier(.2,.7,.2,1)'; });
+      const enter = () => { zoom.style.transform = 'scale(1.045)'; this.dash(path, 0, 760); kids.forEach((k, i) => { k.style.transitionDelay = (120 + i * 80) + 'ms'; k.style.opacity = 1; k.style.transform = 'none'; }); };
+      const leave = () => { zoom.style.transform = ''; this.dash(path, 1, 420); kids.forEach(k => { k.style.transitionDelay = '0ms'; k.style.opacity = 0; k.style.transform = 'translateY(8px)'; }); };
+      this.on(f, 'mouseenter', enter); this.on(f, 'mouseleave', leave); this.on(f, 'focusin', enter); this.on(f, 'focusout', leave);
+    });
+  }
+
+  setupThreads() {
+    this.rootRef.current.querySelectorAll('[data-thread]').forEach(a => {
+      if (a._thread) a._thread.remove();
+      const w = a.offsetWidth;
+      const s = this.el('svg', { width: w + 16, height: 18, 'aria-hidden': 'true' }); s.style.cssText = 'position:absolute;left:0;top:100%;overflow:visible;pointer-events:none';
+      const d = 'M0 2 C ' + (w * .3) + ' 3.6, ' + (w * .6) + ' 0.6, ' + (w - 6) + ' 2 C ' + (w + 4) + ' 2.6, ' + (w + 9) + ' 11, ' + (w + 2) + ' 13 C ' + (w - 3) + ' 14.4, ' + (w - 5) + ' 8, ' + (w + 3) + ' 5.5';
+      const p = this.el('path', { d, pathLength: 1, fill: 'none', style: 'stroke:var(--color-accent);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1' }, s);
+      a.appendChild(s); a._thread = s;
+      if (!a._threadBound) { a._threadBound = true; this.on(a, 'mouseenter', () => this.dash(a._thread.firstChild, 0, this.reduced ? 1 : 560)); this.on(a, 'mouseleave', () => this.dash(a._thread.firstChild, 1, 320)); this.on(a, 'focus', () => this.dash(a._thread.firstChild, 0, 400)); this.on(a, 'blur', () => this.dash(a._thread.firstChild, 1, 300)); }
+    });
+  }
+
+  setupWeave() {
+    const W = this.q('weave'); W.innerHTML = ''; this.strands = [];
+    const N = 9;
+    for (let i = 0; i < N; i++) {
+      const c = (i === 2 || i === 6) ? 'var(--color-accent-600)' : 'var(--color-neutral-900)';
+      const s = document.createElement('div');
+      s.style.cssText = 'position:absolute;left:0;width:140vw;top:' + (i * 100 / N - .6) + 'vh;height:' + (100 / N + 1.2) + 'vh;border-radius:999px;background:repeating-linear-gradient(110deg, ' + c + ' 0 9px, color-mix(in oklch, ' + c + ', black 22%) 9px 11px);transform:translateX(-150vw)';
+      W.appendChild(s); this.strands.push(s);
+    }
+    this.rootRef.current.querySelectorAll('[data-weave]').forEach(a => this.on(a, 'click', e => {
+      const id = a.getAttribute('href'); if (!id || id[0] !== '#') return;
+      const t = id === '#top' ? this.rootRef.current : this.rootRef.current.querySelector(id); if (!t) return;
+      e.preventDefault(); this.weaveTo(t);
+    }));
+  }
+  weaveTo(t) {
+    const W = this.q('weave'), hh = this.q('header').offsetHeight;
+    const jump = () => {
+      const y = t === this.rootRef.current ? 0 : t.getBoundingClientRect().top + scrollY - (t.id === 'process' ? 0 : hh);
+      window.scrollTo({ top: y, behavior: 'instant' });
+      if (this.yarn) this.yarn.cur = this.yarnTarget();
+    };
+    if (this.reduced || this.weaving) { jump(); return; }
+    this.weaving = true; W.style.display = 'block';
+    const ez = 'cubic-bezier(.7,0,.25,1)';
+    this.strands.forEach((s, i) => {
+      const fromR = i % 2 === 1;
+      s.animate([
+        { transform: 'translateX(' + (fromR ? 150 : -150) + 'vw)', easing: ez },
+        { transform: 'translateX(-20vw)', offset: .38 },
+        { transform: 'translateX(-20vw)', offset: .62, easing: ez },
+        { transform: 'translateX(' + (fromR ? -150 : 110) + 'vw)' }
+      ], { duration: 820, delay: i * 12, fill: 'both' });
+    });
+    setTimeout(jump, 455);
+    setTimeout(() => { W.style.display = 'none'; this.weaving = false; this.strands.forEach(s => s.getAnimations().forEach(a => a.cancel())); }, 940);
+  }
+
+  buildProcess() {
+    const svg = this.q('procSvg'); svg.innerHTML = '';
+    const defs = this.el('defs', {}, svg);
+    const mask = this.el('mask', { id: 'lcProcMask', maskUnits: 'userSpaceOnUse', x: -100, y: -100, width: 1000, height: 800 }, defs);
+    this.pMask = this.el('path', { fill: 'none', pathLength: 1, stroke: 'white', 'stroke-width': 40, style: 'stroke-dasharray:1 2;stroke-dashoffset:1' }, mask);
+    this.pLineG = this.el('g', { mask: 'url(#lcProcMask)' }, svg);
+    this.pLine = this.el('path', { fill: 'none', style: 'stroke:var(--color-accent-600);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round' }, this.pLineG);
+    this.pPly = this.el('path', { fill: 'none', style: 'stroke:var(--color-accent-200);stroke-width:1;stroke-linecap:round;stroke-dasharray:0.1 5' }, this.pLineG);
+    const inside = (x, y) => { if (y < 156 || y > 456) return false; const t = (y - 160) / 296; return x > 250 - 45 * t + 6 && x < 550 + 45 * t - 6; };
+    this.pRows = [];
+    for (let r = 0; r < 9; r++) {
+      const y = 440 - r * 34, g = this.el('g', { opacity: 0 }, svg), gi = this.el('g', {}, g), go = this.el('g', {}, g);
+      for (let c = 0; c < 16; c++) {
+        const x = 168 + c * 30.7 + (r % 2 ? 4 : 0);
+        const d = 'M' + (x - 8) + ' ' + (y - 9) + ' C ' + (x - 3) + ' ' + (y - 15) + ', ' + (x + 3) + ' ' + (y - 15) + ', ' + (x + 8) + ' ' + (y - 9) + ' M' + (x - 1) + ' ' + (y - 9) + ' C ' + (x - 5) + ' ' + y + ', ' + (x + 3) + ' ' + (y + 8) + ', ' + (x - 1) + ' ' + (y + 16);
+        this.el('path', { d, fill: 'none', style: 'stroke:var(--color-neutral-800);stroke-width:2;stroke-linecap:round' }, inside(x, y) ? gi : go);
+      }
+      this.pRows.push({ g, go });
+    }
+    const os = 'fill:none;stroke:var(--color-text);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1';
+    this.pBag = this.el('path', { d: 'M250 160 L205 430 Q200 460 232 460 L568 460 Q600 460 595 430 L550 160 Z', pathLength: 1, style: os }, svg);
+    this.pHandle = this.el('path', { d: 'M305 160 C305 46, 495 46, 495 160', pathLength: 1, style: os }, svg);
+    this.pLast = -1;
+  }
+  lineD(L) {
+    const k = 17, a = 840 / (2 * Math.PI * k), b = 16 * L; let d = '';
+    for (let i = 0; i <= 320; i++) {
+      const t = i / 320, th = 2 * Math.PI * k * t;
+      const x = -20 + 840 * t - b * Math.sin(th), y = 478 - b * (1 - Math.cos(th)) * .9 + (1 - L) * 10 * Math.sin(2 * Math.PI * 2.3 * t);
+      d += (i ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+    }
+    return d;
+  }
+  tickProcess() {
+    const sec = this.q('proc'); if (!sec) return;
+    const r = sec.getBoundingClientRect();
+    if (r.bottom < -100 || r.top > innerHeight + 100) return;
+    const c = v => Math.max(0, Math.min(1, v));
+    const p = c(-r.top / (r.height - innerHeight));
+    if (Math.abs(p - this.pLast) < .0005) return; this.pLast = p;
+    const s1 = c(p / .18), s2 = c((p - .2) / .18), s3 = c((p - .4) / .18), s4 = c((p - .6) / .18), s5 = c((p - .8) / .15);
+    const d = this.lineD(s2);
+    this.pLine.setAttribute('d', d); this.pPly.setAttribute('d', d); this.pMask.setAttribute('d', d);
+    this.pMask.style.strokeDashoffset = 1 - s1;
+    this.pLineG.style.opacity = 1 - s4 * .75;
+    this.pRows.forEach((row, i) => { const o = c(s3 * 9.5 - i); row.g.setAttribute('opacity', o); row.g.setAttribute('transform', 'translate(0 ' + ((1 - o) * 8).toFixed(1) + ')'); row.go.setAttribute('opacity', 1 - s4); });
+    this.pBag.style.strokeDashoffset = 1 - s4;
+    this.pHandle.style.strokeDashoffset = 1 - c(s4 * 1.5 - .5);
+    this.q('procSvg').style.opacity = 1 - .85 * s5;
+    const img = this.q('procImg'); img.style.opacity = s5; img.style.transform = 'scale(' + (.96 + .04 * s5) + ')';
+    this.q('procBar').style.transform = 'scaleX(' + p + ')';
+    const step = Math.min(4, Math.floor(p * 5));
+    if (step !== this.state.step) this.setState({ step });
+  }
+
+  setupStitchObserver() {
+    this.sio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting && !this.drawn) { this.sio.disconnect(); const run = () => { if (!this.drawn) { this.drawn = true; this.drawStitch(this.state.stitch); } }; this.ready ? run() : this.pending.push(run); }
+    }), { threshold: .35 });
+    this.sio.observe(this.q('stitchSvg'));
+  }
+  pick(i) { if (i === this.state.stitch && this.drawn) return; this.drawn = true; this.setState({ stitch: i }); this.drawStitch(i); }
+  drawStitch(i) {
+    const svg = this.q('stitchSvg'); svg.innerHTML = '';
+    const def = this.DEFS[i], red = this.reduced;
+    const defs = this.el('defs', {}, svg), pat = this.el('pattern', { id: 'lcDots', width: 20, height: 20, patternUnits: 'userSpaceOnUse' }, defs);
+    this.el('circle', { cx: 10, cy: 10, r: .9, style: 'fill:var(--color-neutral-400)' }, pat);
+    this.el('rect', { width: 560, height: 380, fill: 'url(#lcDots)' }, svg);
+    const chain = [], rows = [];
+    const x0 = 40, x1 = 520, baseY = 346;
+    for (let x = x0; x <= x1 + .1; x += 24) chain.push('M' + (x - 8) + ' ' + baseY + ' A8 4.5 0 1 0 ' + (x + 8) + ' ' + baseY + ' A8 4.5 0 1 0 ' + (x - 8) + ' ' + baseY);
+    const h = def.h;
+    const sym = (x, yb) => {
+      const cy = yb - h / 2;
+      if (def.k === 'sc') return 'M' + (x - 7) + ' ' + (cy - 7) + ' L' + (x + 7) + ' ' + (cy + 7) + ' M' + (x + 7) + ' ' + (cy - 7) + ' L' + (x - 7) + ' ' + (cy + 7);
+      const T = 'M' + x + ' ' + (yb - 3) + ' L' + x + ' ' + (yb - h + 5) + ' M' + (x - 8) + ' ' + (yb - h + 5) + ' L' + (x + 8) + ' ' + (yb - h + 5);
+      if (def.k === 'hdc') return T;
+      if (def.k === 'dc') return T + ' M' + (x - 5) + ' ' + (cy + 4) + ' L' + (x + 5) + ' ' + (cy - 4);
+      let d = '';
+      [-24, 0, 24].forEach(ang => {
+        const a = ang * Math.PI / 180, L = h - 8, tx = x + Math.sin(a) * L, ty = yb - 3 - Math.cos(a) * L, mx = x + Math.sin(a) * L * .5, my = yb - 3 - Math.cos(a) * L * .5;
+        const px = Math.cos(a) * 7, py = Math.sin(a) * 7;
+        d += 'M' + x + ' ' + (yb - 3) + ' L' + tx.toFixed(1) + ' ' + ty.toFixed(1) + ' M' + (tx - px).toFixed(1) + ' ' + (ty - py).toFixed(1) + ' L' + (tx + px).toFixed(1) + ' ' + (ty + py).toFixed(1) + ' M' + (mx - 4).toFixed(1) + ' ' + (my + 3).toFixed(1) + ' L' + (mx + 4).toFixed(1) + ' ' + (my - 3).toFixed(1) + ' ';
+      });
+      return d;
+    };
+    let yb = baseY - 8, r = 0;
+    while (yb - h > 14) {
+      const xs = [];
+      if (def.k === 'gr') { for (let x = x0 + 12 + (r % 2 ? 36 : 0); x <= x1 - 10; x += def.gap) xs.push(x); }
+      else for (let x = x0; x <= x1 + .1; x += def.gap) xs.push(x);
+      if (r % 2) xs.reverse();
+      xs.forEach(x => rows.push(sym(x, yb)));
+      yb -= h + 6; r++;
+    }
+    const add = (d, col, w, delay, dur) => {
+      const p = this.el('path', { d, fill: 'none', pathLength: 1, style: 'stroke:' + col + ';stroke-width:' + w + ';stroke-linecap:round;stroke-linejoin:round' }, svg);
+      if (red) return;
+      p.style.strokeDasharray = '1'; p.style.strokeDashoffset = '1';
+      p.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: dur, delay, fill: 'forwards', easing: 'ease-out' });
+    };
+    chain.forEach((d, j) => add(d, 'var(--color-neutral-600)', 1.4, j * 16, 180));
+    const per = Math.min(70, 1800 / Math.max(1, rows.length));
+    rows.forEach((d, j) => add(d, def.col, 1.8, 420 + j * per, 240));
+  }
+
+  setupCursor() {
+    const cv = this.q('cursor');
+    if (!this.fine || this.reduced || this.props.cursorThread === false) { cv.style.display = 'none'; this.rope = null; return; }
+    cv.style.display = '';
+    const ctx = cv.getContext('2d');
+    const fit = () => { const d = Math.min(2, devicePixelRatio || 1); cv.width = innerWidth * d; cv.height = innerHeight * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
+    fit(); this.on(window, 'resize', fit);
+    const m = this.mouse, N = 26;
+    this.rope = { ctx, pts: Array.from({ length: N }, () => ({ x: m.x, y: m.y, px: m.x, py: m.y })), alpha: 0, loop: 0, hx: m.x, hy: m.y, col: getComputedStyle(this.rootRef.current).getPropertyValue('--color-accent-600').trim() || '#a06f24' };
+  }
+  tickCursor(now) {
+    const R = this.rope; if (!R) return;
+    const m = this.mouse, ctx = R.ctx, pts = R.pts, N = pts.length;
+    R.hx += (m.x - R.hx) * .42; R.hy += (m.y - R.hy) * .42;
+    pts[0].x = R.hx; pts[0].y = R.hy;
+    for (let i = 1; i < N; i++) { const p = pts[i], vx = (p.x - p.px) * .9, vy = (p.y - p.py) * .9; p.px = p.x; p.py = p.y; p.x += vx; p.y += vy + .1; }
+    const seg = 6;
+    for (let k = 0; k < 3; k++) for (let i = 1; i < N; i++) {
+      const a = pts[i - 1], b = pts[i], dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || .001, f = (d - seg) / d;
+      if (i === 1) { b.x -= dx * f; b.y -= dy * f; } else { b.x -= dx * f * .5; b.y -= dy * f * .5; a.x += dx * f * .5; a.y += dy * f * .5; }
+    }
+    const tgt = now - m.t < 700 ? .8 : 0;
+    R.alpha += (tgt - R.alpha) * (tgt > R.alpha ? .12 : .03);
+    const it = m.target && m.target.closest && m.target.closest('a,button,[data-product],input');
+    R.loop += ((it ? 1 : 0) - R.loop) * .14;
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    if (R.alpha < .01) return;
+    ctx.lineCap = 'round'; ctx.lineWidth = 1.4; ctx.strokeStyle = R.col;
+    if (R.loop > .03) { const r = 11 * R.loop; ctx.globalAlpha = R.alpha; ctx.beginPath(); ctx.arc(R.hx + r * .3, R.hy - r, r, Math.PI * .6, Math.PI * .6 + Math.PI * 2 * R.loop * .96); ctx.stroke(); }
+    for (let i = 1; i < N - 1; i++) {
+      const a = pts[i - 1], b = pts[i], c = pts[i + 1];
+      ctx.globalAlpha = R.alpha * Math.pow(1 - i / N, 1.3);
+      ctx.beginPath(); ctx.moveTo((a.x + b.x) / 2, (a.y + b.y) / 2); ctx.quadraticCurveTo(b.x, b.y, (b.x + c.x) / 2, (b.y + c.y) / 2); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  buildYarn() {
+    const root = this.rootRef.current, svg = this.q('yarn'); if (!root || !svg) return;
+    svg.setAttribute('height', 0);
+    const W = root.offsetWidth, H = root.offsetHeight, rr = root.getBoundingClientRect();
+    svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.innerHTML = '';
+    const an = [...root.querySelectorAll('[data-yarn]')].map(e => { const b = e.getBoundingClientRect(); return { x: b.left - rr.left + b.width / 2, y: b.top - rr.top + b.height / 2, end: e.dataset.yarn === 'end', r: b.width / 2 }; });
+    if (an.length < 2) return;
+    let seed = 5; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+    const cl = (v, a, b) => Math.max(a, Math.min(b, v));
+    const pts = [];
+    an.forEach((a, i) => {
+      if (a.end) {
+        const r = a.r * .62, cx = a.x, cy = a.y, pv = an[i - 1];
+        pts.push({ x: cl((pv.x + cx) / 2 + W * .12, W * .03, W * .97), y: (pv.y + cy) / 2 });
+        [[-2.6, -1.8], [-1.6, .85], [-.2, .8], [.7, .1], [.45, -.8], [-.35, -.75], [-.55, .1], [.2, .85], [1.7, .95]].forEach(([u, v]) => pts.push({ x: cx + u * r, y: cy + v * r }));
+        return;
+      }
+      if (i > 0) { const b = an[i - 1], side = i % 2 ? 1 : -1; pts.push({ x: cl((a.x + b.x) / 2 + side * W * (.14 + rnd() * .08), W * .03, W * .97), y: (a.y + b.y) / 2 + (rnd() - .5) * 60 }); }
+      pts.push({ x: a.x, y: a.y });
+    });
+    const f = v => v.toFixed(1);
+    let d = 'M' + f(pts[0].x) + ' ' + f(pts[0].y);
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      d += ' C' + f(p1.x + (p2.x - p0.x) / 6) + ' ' + f(p1.y + (p2.y - p0.y) / 6) + ' ' + f(p2.x - (p3.x - p1.x) / 6) + ' ' + f(p2.y - (p3.y - p1.y) / 6) + ' ' + f(p2.x) + ' ' + f(p2.y);
+    }
+    const defs = this.el('defs', {}, svg);
+    const mask = this.el('mask', { id: 'lcYarnMask', maskUnits: 'userSpaceOnUse', x: 0, y: 0, width: W, height: H }, defs);
+    const mp = this.el('path', { d, fill: 'none', stroke: 'white', 'stroke-width': 18, 'stroke-linecap': 'round' }, mask);
+    const g = this.el('g', { mask: 'url(#lcYarnMask)' }, svg);
+    this.el('path', { d, fill: 'none', transform: 'translate(1 1.6)', style: 'stroke:var(--color-accent-900);stroke-width:3;opacity:.14;stroke-linecap:round' }, g);
+    this.el('path', { d, fill: 'none', style: 'stroke:var(--color-accent-500);stroke-width:2.6;stroke-linecap:round' }, g);
+    this.el('path', { d, fill: 'none', style: 'stroke:var(--color-accent-200);stroke-width:1;stroke-linecap:round;stroke-dasharray:0.1 6' }, g);
+    const L = mp.getTotalLength(), lens = [], ys = []; let my = -1e9;
+    for (let i = 0; i <= 600; i++) { const l = L * i / 600; my = Math.max(my, mp.getPointAtLength(l).y); lens.push(l); ys.push(my); }
+    mp.style.strokeDasharray = L + ' ' + (L + 40);
+    const prev = this.yarn;
+    this.yarn = { L, lens, ys, mp, H, cur: prev ? Math.min(prev.cur, L) : 0, last: -1 };
+  }
+  yarnTarget() {
+    const Y = this.yarn, rr = this.rootRef.current.getBoundingClientRect();
+    if (this.reduced || -rr.top + innerHeight >= Y.H - 6) return Y.L;
+    const yv = -rr.top + innerHeight * .62;
+    let lo = 0, hi = Y.ys.length - 1;
+    while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (Y.ys[mid] <= yv) lo = mid; else hi = mid - 1; }
+    return Y.ys[0] > yv ? 0 : Y.lens[lo];
+  }
+  tickYarn() {
+    const Y = this.yarn; if (!Y) return;
+    const t = this.yarnTarget();
+    Y.cur += (t - Y.cur) * (this.reduced ? 1 : .09);
+    if (Math.abs(t - Y.cur) < .5) Y.cur = t;
+    if (Y.cur !== Y.last) { Y.mp.style.strokeDashoffset = Y.L - Y.cur; Y.last = Y.cur; }
+  }
+
+  tick() {
+    const now = performance.now(), h = this.hero, obj = this.q('heroObj');
+    if (h && obj && scrollY < innerHeight * 1.2) {
+      const red = this.reduced, tx = red ? 8 : 8 + (this.mouse.ny - .5) * -16, ty = red ? 0 : (this.mouse.nx - .5) * 22;
+      h.vx += (tx - h.rx) * .035; h.vy += (ty - h.ry) * .035; h.vx *= .86; h.vy *= .86; h.rx += h.vx; h.ry += h.vy;
+      if (Math.abs(h.vx) + Math.abs(h.vy) > .0005) obj.style.transform = 'rotateX(' + h.rx.toFixed(2) + 'deg) rotateY(' + h.ry.toFixed(2) + 'deg)';
+    }
+    this.tickCursor(now); this.tickYarn(); this.tickProcess();
+  }
+
+  addToCart = () => {
+    const img = this.q('detailImg'), cart = this.q('cart');
+    if (!this.reduced) { img.animate([{ transform: 'scale(1)' }, { transform: 'scale(.97)', offset: .4 }, { transform: 'scale(1)' }], { duration: 480, easing: 'cubic-bezier(.4,0,.2,1)' }); cart.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.15)' }, { transform: 'scale(1)' }], { duration: 320, delay: 200 }); }
+    this.setState(s => ({ cart: s.cart + 1 }));
+  };
+
+  renderVals() {
+    const { ann, step, stitch, cart } = this.state;
+    const setAnn = i => () => { if (this.state.ann !== i) this.setState({ ann: i }); };
+    const v = {
+      rootRef: this.rootRef, cartCount: cart, cartLabel: 'Bag, ' + cart + ' items', addToCart: this.addToCart, annOff: setAnn(-1),
+      steps: this.STEPS.map((s, i) => ({ n: s.n, title: s.title, color: i === step ? 'var(--color-text)' : 'var(--color-neutral-600)' })),
+      stepText: this.STEPS[step].text,
+      stitchList: this.DEFS.map((d, i) => ({ abbr: d.abbr, name: d.name, note: d.note, pick: () => this.pick(i), color: i === stitch ? 'var(--color-text)' : 'var(--color-neutral-600)', bar: i === stitch ? '56px' : '16px' })),
+      stitchCaption: 'Chart — ' + this.DEFS[stitch].name + '. Rows worked back and forth, turning at each end.'
+    };
+    for (let i = 0; i < 4; i++) {
+      const on = ann === i;
+      v['ann' + i] = setAnn(i); v['a' + i] = on ? 1 : 0;
+      v['h' + i + 'bg'] = on ? 'var(--color-text)' : 'var(--color-bg)'; v['h' + i + 'fg'] = on ? 'var(--color-bg)' : 'var(--color-text)';
+      v['r' + i] = on ? 'var(--color-accent-700)' : 'var(--color-text)';
+    }
+    return v;
+  }
+}
+</script>
+</body>
+</html>
